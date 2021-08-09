@@ -14,9 +14,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('From API'),
+        title: Text('Kannur'),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<CovidStateWise>(
         future: CovidApi().fetchServiceApi(),
         builder: (context, snapshot) {
           if (!snapshot.hasData)
@@ -34,8 +34,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                              'Total :${snapshot.data['KL']['districts']['Kannur']['total']}'),
-                          // Text('Kannur total :${snapshot.data[index].kl.districts.kannur.total.confirmed}'),
+                              'Total Confirmed :${snapshot.data.kl.districts.kannur.total.confirmed}'),
+                          Text(
+                              'Total Deceased :${snapshot.data.kl.districts.kannur.total.deceased}'),
+                          Text(
+                              'Total recovered :${snapshot.data.kl.districts.kannur.total.recovered}'),
+                          Text(
+                              'Total Tested :${snapshot.data.kl.districts.kannur.total.tested}'),
+                          Text(
+                              'Total 1st Dose :${snapshot.data.kl.districts.kannur.total.vaccinated1}'),
                         ],
                       ),
                     ),
